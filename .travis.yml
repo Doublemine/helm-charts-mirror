@@ -3,6 +3,10 @@ language: python
 python:
   - "3.6"
 
+branches:
+  only:
+  - sync
+
 before_install:
   - git config --global user.name "$USERNAME" 
   - git config --global user.email "$EMAIL"
@@ -11,7 +15,8 @@ install:
   - pip install -r requirements.txt
 
 script:
+  - git checkout master
   - python fetch.py
   - git add .
-  - git commit -am "travis automated update helm charts"
-  - git push --force -u --quiet "https://${GH_TOKEN}@${GH_REF}" master:charts
+  - git commit -am "travis automated update helm charts ${TZ=UTC-8 date  '+%Y-%m-%d %H:%M:%S'} "
+  - git push --force -u --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
