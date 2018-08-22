@@ -58,7 +58,13 @@ class ProgressBar(object):
 
 
 def main():
+<<<<<<< Updated upstream
     root = os.getcwd()
+=======
+    root = os.path.join(os.getcwd(),'charts')
+    if not os.path.exists(root):
+        os.mkdir(root)
+>>>>>>> Stashed changes
     chart_url = os.environ.get(
         "CHARTS_URL", "https://kubernetes-charts.storage.googleapis.com/")
     repo_url = os.environ.get("GIT_REPO")
