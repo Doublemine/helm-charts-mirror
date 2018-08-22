@@ -58,7 +58,7 @@ class ProgressBar(object):
 
 
 def main():
-    root = "/mnt/charts/docs"
+    root = os.getcwd()
     chart_url = os.environ.get(
         "CHARTS_URL", "https://kubernetes-charts.storage.googleapis.com/")
     repo_url = os.environ.get("GIT_REPO")
