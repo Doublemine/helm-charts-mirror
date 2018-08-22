@@ -19,4 +19,4 @@ script:
   - python fetch.py
   - git add .
   - git commit -am "travis automated update helm charts ${TZ=UTC-8 date  '+%Y-%m-%d %H:%M:%S'} "
-  - git push --force -u --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push --force -u "https://$USERNAME:${GH_TOKEN}@${GH_REF}" master:master
