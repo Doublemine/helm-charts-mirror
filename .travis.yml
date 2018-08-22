@@ -12,8 +12,10 @@ install:
 
 script:
   - python fetch.py
+  - pwd
 
 after_script:
+  - pwd
   - git add .
   - git commit -am "travis automated update helm charts"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:charts
