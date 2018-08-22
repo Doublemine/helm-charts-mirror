@@ -58,7 +58,7 @@ class ProgressBar(object):
 
 
 def main():
-    root = os.path.join(os.getcwd(),'charts')
+    root = os.path.join(os.getcwd(),'docs')
     if not os.path.exists(root):
         os.mkdir(root)
     chart_url = os.environ.get(
