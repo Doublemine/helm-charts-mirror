@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # encoding: utf-8
 
 import yaml
@@ -7,7 +6,9 @@ from contextlib import closing
 import os
 from urllib.parse import urlparse
 
-# 转自https://www.zhihu.com/question/41132103/answer/93438156 
+# 转自https://www.zhihu.com/question/41132103/answer/93438156
+
+
 def wget(url, file_name):
     with closing(requests.get(url, stream=True)) as response:
         chunk_size = 1024  # 单次请求最大值
@@ -58,7 +59,7 @@ class ProgressBar(object):
 
 
 def main():
-    root = os.path.join(os.getcwd(),'docs')
+    root = os.path.join(os.getcwd(), 'docs')
     if not os.path.exists(root):
         os.mkdir(root)
     chart_url = os.environ.get(
@@ -95,5 +96,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-
+    try:
+        main()
+    except Exception as error:
+        print(error)
+        exit(1)
