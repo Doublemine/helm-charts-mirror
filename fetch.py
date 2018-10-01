@@ -12,8 +12,7 @@ from urllib.parse import urlparse
 def wget(url, file_name):
     with closing(requests.get(url, stream=True)) as response:
         chunk_size = 1024  # 单次请求最大值
-        content_size = int(response.headers['content-length'])  # 内容体总大小
-        print("下载"+file_name)
+        print(file_name+" downloading...")
         with open(file_name, "wb") as file:
             for data in response.iter_content(chunk_size=chunk_size):
                 file.write(data)
@@ -28,6 +27,7 @@ def main():
     repo_url = os.environ.get("GIT_REPO")
     if repo_url is None:
         raise RuntimeError("You must specify a git repo!")
+    print("parse url...")
     p = urlparse(repo_url)
     git_user = p.path.split("/")[-2]
     repo_name = p.path.split("/")[-1].split(".")[0]
