@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 
 def wget(url, file_name):
     with closing(requests.get(url, stream=True)) as response:
-        chunk_size = 1024  # 单次请求最大值
+        chunk_size = 4096  # 单次请求最大值
         print(file_name+" downloading...")
         with open(file_name, "wb") as file:
             for data in response.iter_content(chunk_size=chunk_size):
